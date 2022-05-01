@@ -244,17 +244,6 @@ that do not appear in the QM9 dataset, you receive the following warning.
 
 If you would like to predict the molecules including S and Cl atoms,
 train a QDF model with the Alchemy dataset [4].
-However, the current implementation only considers the standard basis set
-(e.g., 3-21G and 6-31G) for H, C, N, O and F atoms in the QM9 dataset.
-For S, Cl, and other heavier atoms in the Alchemy dataset,
-you will need to add a script to consider the basis set
-for such heavy atoms in preprocess.py as follows.
-
-<div align='center'>
-<p><img src='figure/basis_set.jpeg' width='500'/></p>
-</div>
-
-
 
 ## Extension
 
