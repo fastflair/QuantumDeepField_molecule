@@ -150,30 +150,31 @@ def create_dataset(dir_dataset, filename, basis_set,
 
         """Create each data with the above defined functions."""
         atomic_coords = np.array(atomic_coords)
-        atomic_orbitals = create_orbitals(atomic_orbitals, orbital_dict)
-        field_coords = create_field(sphere, atomic_coords)
-        distance_matrix = create_distancematrix(field_coords, atomic_coords)
-        atomic_numbers = np.array(atomic_numbers)
-        potential = create_potential(distance_matrix, atomic_numbers)
-        distance_matrix = create_distancematrix(field_coords, orbital_coords)
-        quantum_numbers = np.array([quantum_numbers])
-        N_electrons = np.array([[N_electrons]])
-        N_field = len(field_coords)  # The number of points in the grid field.
-
-        """Save the above set of data."""
-        data = [idx,
-                atomic_orbitals.astype(np.int64),
-                distance_matrix.astype(np.float32),
-                quantum_numbers.astype(np.float32),
-                N_electrons.astype(np.float32),
-                N_field]
-
-        if property:
-            data += [property_values.astype(np.float32),
-                     potential.astype(np.float32)]
-
-        data = np.array(data, dtype=object)
-        np.save(dir_preprocess + idx, data)
+        if len(atomic_coords) > 0:
+            atomic_orbitals = create_orbitals(atomic_orbitals, orbital_dict)
+            field_coords = create_field(sphere, atomic_coords)
+            distance_matrix = create_distancematrix(field_coords, atomic_coords)
+            atomic_numbers = np.array(atomic_numbers)
+            potential = create_potential(distance_matrix, atomic_numbers)
+            distance_matrix = create_distancematrix(field_coords, orbital_coords)
+            quantum_numbers = np.array([quantum_numbers])
+            N_electrons = np.array([[N_electrons]])
+            N_field = len(field_coords)  # The number of points in the grid field.
+    
+            """Save the above set of data."""
+            data = [idx,
+                    atomic_orbitals.astype(np.int64),
+                    distance_matrix.astype(np.float32),
+                    quantum_numbers.astype(np.float32),
+                    N_electrons.astype(np.float32),
+                    N_field]
+    
+            if property:
+                data += [property_values.astype(np.float32),
+                        potential.astype(np.float32)]
+    
+            data = np.array(data, dtype=object)
+            np.save(dir_preprocess + idx, data)
 
 
 if __name__ == "__main__":
