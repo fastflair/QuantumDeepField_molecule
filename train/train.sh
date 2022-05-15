@@ -2,11 +2,12 @@
 
 # Dataset.
 #dataset=QM9under7atoms_atomizationenergy_eV
-dataset=QM9under14atoms_atomizationenergy_eV
+#dataset=QM9under14atoms_atomizationenergy_eV
 # dataset=QM9full_atomizationenergy_eV
 # dataset=QM9under7atoms_homolumo_eV  # Train homo and lumo simultaneously.
 # dataset=QM9full_homolumo_eV
 # dataset=yourdataset_property_unit
+dataset=drug_side_effects
 
 # Basis set and grid field used in preprocessing.
 basis_set=6-31G
@@ -31,7 +32,7 @@ step_size=200
 iteration=2000
 
 # num_workers=0
-num_workers=6
+num_workers=10
 
 setting=$dataset--$basis_set--radius$radius--grid_interval$grid_interval--dim$dim--layer_functional$layer_functional--hidden_HK$hidden_HK--layer_HK$layer_HK--$operation--batch_size$batch_size--lr$lr--lr_decay$lr_decay--step_size$step_size--iteration$iteration
 python train.py $dataset $basis_set $radius $grid_interval $dim $layer_functional $hidden_HK $layer_HK $operation $batch_size $lr $lr_decay $step_size $iteration $setting $num_workers

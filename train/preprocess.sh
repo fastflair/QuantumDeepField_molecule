@@ -2,11 +2,12 @@
 
 # Dataset.
 #dataset=QM9under7atoms_atomizationenergy_eV
-dataset=QM9under14atoms_atomizationenergy_eV
+# dataset=QM9under14atoms_atomizationenergy_eV
 # dataset=QM9full_atomizationenergy_eV
 # dataset=QM9under7atoms_homolumo_eV  # Two properties (homo and lumo).
 # dataset=QM9full_homolumo_eV
 # dataset=yourdataset_property_unit
+dataset=drug_side_effects
 
 # Basis set.
 basis_set=6-31G
